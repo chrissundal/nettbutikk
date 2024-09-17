@@ -30,7 +30,7 @@ function createPockets(){
     else if (isOpen == true) { html = `
         <div class="main">
         <div>${shoppingCart}</div>
-        <div>Totalt: ${totalPrice}</div>
+        <div><strong>Totalt: ${totalPrice} kr</strong></div>
         <button onclick="checkOut()">Checkout</button>
         <button onclick="closePocket()">Close</button>
         </div>
