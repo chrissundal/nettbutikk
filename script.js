@@ -24,11 +24,12 @@ function updateView(){
     `;
 }
 function createPockets(){
+    
     let html = '';
     if (isOpen == false) return '<button class="cartButton" onclick="updateCart()">Handlekurv</button>';
     else if (isOpen == true) { html = `
         <div class="main">
-        <div>${showItem}</div>
+        <div>${shoppingCart}</div>
         <div>Totalt: ${totalPrice}</div>
         <button onclick="checkOut()">Checkout</button>
         <button onclick="closePocket()">Close</button>
@@ -58,34 +59,22 @@ function showProducts(){
     }
     return showpro;
 }
-function showCartItems(index){
+
+function addToCart(index){
+    totalPrice += prices[index]
     productHtml = `
     <div class="cartItems">
     <img src="${imgFiles[index]}" height = 30px width = 30px/>
     <div> ${pocketStuff[index]}</div>
     <div class="price">${prices[index]} kr</div>
-    <div class="delBtn">
-    <button onclick="deleteItem(this)">X</button>
     </div>
-    </div>
-    `;
-    return productHtml;
-}
-function addToCart(index){
-    itemPrice = prices[index]
-    totalPrice += itemPrice;
-    shoppingCart.push(showCartItems(index)) 
-    showItem = shoppingCart
+    `; 
+    shoppingCart.push(productHtml) 
     updateView();
+    console.log(productHtml)
+    console.log(shoppingCart)
 }
-function deleteItem(elementID) {
-    totalPrice -= itemPrice;
-    console.log(totalPrice)
-    console.log(prices)
-    shoppingCart.splice(elementID, 1)
-    updateView(); 
-    showCartItems();
- }
+
 function closePocket(){
     isOpen = false;
     updateView();
