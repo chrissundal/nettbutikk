@@ -2,10 +2,11 @@ let pocketStuff = ['Hat', 'Pencil', 'Dinosaur', 'Showercap', 'Piece of Tape'];
 let imgFiles = ['IMG/hatt.jpg', 'IMG/blyant.jpg', 'IMG/dinosaur.jpg', 'IMG/showercap.jpg', 'IMG/tape.jpg']
 let prices = [49, 15, 149, 99, 35]
 let shoppingCart = []
-let showText = '';
+let showItem = '';
 let isOpen = false;
 let productHtml = '';
 let totalPrice = 0;
+let itemPrice = 0;
 
 updateView();
 function updateView(){
@@ -27,7 +28,7 @@ function createPockets(){
     if (isOpen == false) return '<button class="cartButton" onclick="updateCart()">Handlekurv</button>';
     else if (isOpen == true) { html = `
         <div class="main">
-        <div>${productHtml}</div>
+        <div>${showItem}</div>
         <div>Totalt: ${totalPrice}</div>
         <button onclick="checkOut()">Checkout</button>
         <button onclick="closePocket()">Close</button>
@@ -58,26 +59,30 @@ function showProducts(){
     return showpro;
 }
 function showCartItems(index){
-    productHtml += `
+    productHtml = `
     <div class="cartItems">
     <img src="${imgFiles[index]}" height = 30px width = 30px/>
     <div> ${pocketStuff[index]}</div>
     <div class="price">${prices[index]} kr</div>
     <div class="delBtn">
-    <button onclick="deleteItem(${index})">X</button>
+    <button onclick="deleteItem(this)">X</button>
     </div>
     </div>
     `;
     return productHtml;
 }
 function addToCart(index){
-    totalPrice += prices[index]
+    itemPrice = prices[index]
+    totalPrice += itemPrice;
     shoppingCart.push(showCartItems(index)) 
+    showItem = shoppingCart
     updateView();
 }
-function deleteItem(index) {
-    console.log(shoppingCart)
-    shoppingCart.splice(index, 1)
+function deleteItem(elementID) {
+    totalPrice -= itemPrice;
+    console.log(totalPrice)
+    console.log(prices)
+    shoppingCart.splice(elementID, 1)
     updateView(); 
  }
 function closePocket(){
