@@ -65,25 +65,24 @@ function showCartItems(index){
     <div> ${pocketStuff[index]}</div>
     <div class="price">${prices[index]} kr</div>
     <div class="delBtn">
-    <button onclick="deleteItem(this)">X</button>
+    <button onclick="deleteItem(this, ${prices[index]})">X</button>
     </div>
     </div>
     `;
     return productHtml;
 }
 function addToCart(index){
-    itemPrice = prices[index]
-    totalPrice += itemPrice;
+    totalPrice += prices[index]
     shoppingCart.push(showCartItems(index)) 
     showItem = shoppingCart
+    showCartItems();
     updateView();
 }
-function deleteItem(elementID) {
-    totalPrice -= itemPrice;
-    console.log(totalPrice)
-    console.log(prices)
+function deleteItem(elementID, price) {
+    totalPrice -= price;
     shoppingCart.splice(elementID, 1)
     updateView(); 
+    showCartItems();
  }
 function closePocket(){
     isOpen = false;
