@@ -4,74 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    .topHeader{
-        position: relative;
-        z-index: 2;
-        background-color: lightgray;
-        height: 50px;
-        text-align: center;
-        box-shadow: 5px 5px 5px black;
-    }
-    .dropDown{
-        position: absolute;
-        z-index: 2;
-        top: 65px;
-        right: 0px;
-    }
-    .grid{
-        display: grid;
-        grid-template-columns: repeat(2, 200px);
-        justify-content: center;
-    }
-    .innerItem{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-    .products{
-        border: 2px solid gray;
-        width: 150px;
-        margin: 10px;
-    }
-    .cartButton{
-        position: absolute;
-        right: 50px;
-        bottom: 5px;
-        z-index: 3;
-    }
-    .main{
-        position: relative;
-        z-index: 1;
-        border: 2px solid black;
-        width: 200px;
-        margin: 10px;
-        padding: 5px;
-        gap: 5px;
-        box-shadow: 5px 5px 5px black;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: lightgray;
-    }
-    
-    button{
-        font-size: large;
-        cursor: pointer;
-    }
-    
-    .cartItems{
-        gap: 5px;
-        display: flex;
-        height: 35px;
-        align-items: center;
-        margin: 5px;
-        
-    }
-    
-</style>
+
 <body>
     
     <div id="app"></div>
